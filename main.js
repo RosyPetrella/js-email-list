@@ -8,22 +8,25 @@
 
 const divEl = document.querySelector(".display");
 const listEl = document.querySelector(".list");
-console.log(divEl, listEl);
+const btnEl = document.querySelector(".btn");
+console.log(divEl, listEl, btnEl);
 
-function generateEmail() {
-  listEl.innerHTML = "";
+btnEl.addEventListener("click", function () {
+  function generateEmail() {
+    listEl.innerHTML = "";
 
-  for (let i = 0; i < 10; i++) {
-    fetch("https://flynn.boolean.careers/exercises/api/random/mail")
-      .then((response) => response.json())
-      .then((data) => {
-        const email = data.response;
-        console.log(email);
+    for (let i = 0; i < 10; i++) {
+      fetch("https://flynn.boolean.careers/exercises/api/random/mail")
+        .then((response) => response.json())
+        .then((data) => {
+          const email = data.response;
+          console.log(email);
 
-        listEl.insertAdjacentHTML("beforeend", `<li>${email}</li>`);
-      })
-      .catch((error) => console.error("error", error));
+          listEl.insertAdjacentHTML("beforeend", `<li>${email}</li>`);
+        })
+        .catch((error) => console.error("error", error));
+    }
   }
-}
 
-generateEmail();
+  generateEmail();
+});
