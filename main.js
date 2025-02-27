@@ -22,7 +22,10 @@ btnEl.addEventListener("click", function () {
           const email = data.response;
           console.log(email);
 
-          listEl.insertAdjacentHTML("beforeend", `<li>${email}</li>`);
+          listEl.insertAdjacentHTML(
+            "beforeend",
+            `<li class="list-group-item text-center text-primary-emphasis">${email}</li>`
+          );
         })
         .catch((error) => console.error("error", error));
     }
